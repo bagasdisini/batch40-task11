@@ -62,14 +62,24 @@
                 <i class="fa-solid fa-clock" style="width: 25px;"></i>
                 <span>{{.BlogDetail.Duration}}</span><br>
                 <h5 class="my-3 fw-bold">Technologies</h5>
+                {{range $index, $tech := .BlogDetail.Technologies}}
+                {{if eq $tech "node"}}
                 <i class="fa-brands fa-node-js mb-3" style="width: 25px;"></i>
                 <span>NodeJs</span><br>
+                {{end}}
+                {{if eq $tech "vuejs"}}
                 <i class="fa-brands fa-vuejs mb-3" style="width: 25px;"></i>
                 <span>VueJs</span><br>
+                {{end}}
+                {{if eq $tech "react"}}
                 <i class="fa-brands fa-react mb-3" style="width: 25px;"></i>
                 <span>ReactJs</span><br>
+                {{end}}
+                {{if eq $tech "js"}}
                 <i class="fa-brands fa-js" style="width: 25px;"></i>
                 <span>TypeScript</span><br>
+                {{end}}
+                {{end}}
             </div>
         </div>
     </div>

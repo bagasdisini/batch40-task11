@@ -128,10 +128,9 @@
           {{$data.Description}}
         </p>
         <div class="mb-3 fs-5">
-          <i class="fa-brands fa-js me-3"></i>
-          <i class="fa-brands fa-node-js me-3"></i>
-          <i class="fa-brands fa-vuejs me-3"></i>
-          <i class="fa-brands fa-react"></i>
+          {{range $index, $tech := $data.Technologies}}
+          <i class="fa-brands fa-{{$tech}} me-3"></i>
+          {{end}}
         </div>
         <button type="button" class="btn bg-orange text-white btn-sm rounded-pill"><a href="/edit-project/{{$data.ID}}"
             class="text-white">

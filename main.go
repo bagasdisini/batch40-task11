@@ -170,7 +170,7 @@ func blogDetail(w http.ResponseWriter, r *http.Request) {
 
 	id, _ := strconv.Atoi(mux.Vars(r)["id"])
 
-	error = connection.Conn.QueryRow(context.Background(), "SELECT name, start_date, end_date, description, duration FROM tb_blog WHERE id=$1", id).Scan(&BlogDetail.ProjectName, &BlogDetail.StartDate, &BlogDetail.EndDate, &BlogDetail.Description, &BlogDetail.Duration)
+	error = connection.Conn.QueryRow(context.Background(), "SELECT name, start_date, end_date, description, duration, technologies FROM tb_blog WHERE id=$1", id).Scan(&BlogDetail.ProjectName, &BlogDetail.StartDate, &BlogDetail.EndDate, &BlogDetail.Description, &BlogDetail.Duration, &BlogDetail.Technologies)
 
 	if error != nil {
 		w.WriteHeader(http.StatusInternalServerError)
@@ -443,6 +443,7 @@ func login(w http.ResponseWriter, r *http.Request) {
 
 	err = connection.Conn.QueryRow(context.Background(),
 		"SELECT * FROM tb_user WHERE email=$1", email).Scan(&user.ID, &user.Name, &user.Email, &user.Password)
+
 	if err != nil {
 
 		var store = sessions.NewCookieStore([]byte("SESSION_KEY"))
